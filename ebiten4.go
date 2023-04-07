@@ -39,23 +39,24 @@ func init() {
 	player := E.NewEntity()
 	E.NewCompPlayer(player)
 	E.NewCompHealth(player, 100)
-
+	E.NewCompPosition(player, 200, 125)
+	E.NewCompRend(player, "assets/gopher.png")
 	//sprite1 := E.New_Sprite()
 	//sprite1.Xpos = 500
 
 	entity1 := E.NewEntity()
-	print(&entity1)
-	entity1.
-		With(E.NewCompRend, E.NewDataArg(nil, nil, E.FArr(-500, -500), nil)).
-		With(E.NewCompCollider, &E.Data{Strings: E.SArr("hej", "yo"), Ints: E.IArr(9, 2)})
-	E.NewCollisionEventTest(entity1, 1)
-	entity2 := E.NewEntity().With(
-		E.NewCompRend, E.NewDataArgFloat(100, 100)).With(
+	E.NewCompRend(entity1, "assets/gopher.png")
+	E.NewCompCollider(entity1)
+	E.NewEventDmgPlayer(entity1, 20, E.Components.EventCollisionMap)
+	E.NewCompPosition(entity1, 500, 500)
+	E.NewCompMoveWithCamera(entity1)
+	/*entity2 := E.NewEntity().With(
+		E.NewCompRend, "assets/gopher.png").With(
 		E.NewCompCollider, E.NewDataArgEmpty()).With(
 		E.NewCompMoveRand, &E.Data{})
 	E.NewCollisionEventTest(entity2, 3)
 	entity4 := E.NewEntity().With(
-		E.NewCompRend, E.NewDataArgFloat(400, 400)).With(
+		E.NewCompRend, "assets/gopher.png").With(
 		E.NewCompMoveRand, E.NewDataArgEmpty()).With(
 		E.NewCompCollider, E.NewDataArgEmpty())
 	print(&entity4)
@@ -69,7 +70,7 @@ func init() {
 		With(E.NewCompRend, E.NewDataArgFloat(400, 400)).With(
 		E.NewCompCollider, E.NewDataArgEmpty())
 	E.NewCollisionEventTest(entity6, 9)
-	print(entity6)*/
+	print(entity6)
 
 	//		With(NewCompRend, NewDataArgFloat(1000, 1000)).
 	//						With(NewCompCollider, &dataArgs{})
@@ -82,7 +83,7 @@ func init() {
 		E.NewCompRend, E.NewDataArgFloat(1000, 0)).With(
 		E.NewCompCollider, &E.Data{})
 
-	//NewCompRenderedNonPlayer(entity2, 1000, 1000)
+	//NewCompRenderedNonPlayer(entity2, 1000, 1000)*/
 }
 
 func initMyComponents() {
