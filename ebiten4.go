@@ -4,10 +4,10 @@ package main
 import (
 	"log"
 
-	Comp "github.com/Blam25/Test/Pkg/Components"
-	Ent "github.com/Blam25/Test/Pkg/Entities"
-	Event "github.com/Blam25/Test/Pkg/Events"
-	S "github.com/Blam25/Test/Pkg/Systems"
+	"github.com/Blam25/Test/Pkg/eccomp"
+	"github.com/Blam25/Test/Pkg/ecentity"
+	"github.com/Blam25/Test/Pkg/ecevent"
+	"github.com/Blam25/Test/Pkg/ecsys"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -18,7 +18,7 @@ func main() {
 	//ebiten.SetTPS(ebiten.SyncWithFPS)
 	//ebiten.SetFPSMode(ebiten.)
 	ebiten.SetWindowTitle("Render an image")
-	if err := ebiten.RunGame(&S.G); err != nil {
+	if err := ebiten.RunGame(&ecsys.G); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -28,32 +28,32 @@ func init() {
 	initMySystems()
 	print("hej")
 
-	player := Ent.NewEntity()
-	Comp.NewPlayer(player)
-	Comp.NewHealth(player, 100)
-	Comp.NewPosition(player, 200, 125)
-	Comp.NewRend(player, "assets/gopher.png")
+	player := ecentity.NewEntity()
+	eccomp.NewPlayer(player)
+	eccomp.NewHealth(player, 100)
+	eccomp.NewPosition(player, 200, 125)
+	eccomp.NewRend(player, "assets/gopher.png")
 
-	entity1 := Ent.NewEntity()
-	Comp.NewRend(entity1, "assets/gopher.png")
-	Comp.NewCollider(entity1)
-	Event.NewDmgPlayer(entity1, 20, Event.Events.CollisionMap)
-	Comp.NewPosition(entity1, 200, -200)
-	Comp.NewMoveWithCamera(entity1)
+	entity1 := ecentity.NewEntity()
+	eccomp.NewRend(entity1, "assets/gopher.png")
+	eccomp.NewCollider(entity1)
+	ecevent.NewDmgPlayer(entity1, 20, ecevent.Events.CollisionMap)
+	eccomp.NewPosition(entity1, 200, -200)
+	eccomp.NewMoveWithCamera(entity1)
 
-	entity2 := Ent.NewEntity()
-	Comp.NewRend(entity2, "assets/gopher.png")
-	Comp.NewCollider(entity2)
-	Event.NewDmgPlayer(entity2, 40, Event.Events.CollisionMap)
-	Comp.NewPosition(entity2, -200, 200)
-	Comp.NewMoveWithCamera(entity2)
+	entity2 := ecentity.NewEntity()
+	eccomp.NewRend(entity2, "assets/gopher.png")
+	eccomp.NewCollider(entity2)
+	ecevent.NewDmgPlayer(entity2, 40, ecevent.Events.CollisionMap)
+	eccomp.NewPosition(entity2, -200, 200)
+	eccomp.NewMoveWithCamera(entity2)
 
-	entity3 := Ent.NewEntity()
-	Comp.NewRend(entity3, "assets/gopher.png")
-	Comp.NewCollider(entity3)
-	Event.NewDmgPlayer(entity3, 60, Event.Events.CollisionMap)
-	Comp.NewPosition(entity3, 100, 100)
-	Comp.NewMoveWithCamera(entity3)
+	entity3 := ecentity.NewEntity()
+	eccomp.NewRend(entity3, "assets/gopher.png")
+	eccomp.NewCollider(entity3)
+	ecevent.NewDmgPlayer(entity3, 60, ecevent.Events.CollisionMap)
+	eccomp.NewPosition(entity3, 100, 100)
+	eccomp.NewMoveWithCamera(entity3)
 
 }
 
