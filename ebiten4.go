@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	ebiten.SetWindowSize(1000, 480)
+	ebiten.SetWindowSize(640, 480)
 	//ebiten.SetVsyncEnabled(false)
 	//ebiten.SetTPS(ebiten.SyncWithFPS)
 	//ebiten.SetFPSMode(ebiten.)
@@ -40,6 +40,7 @@ func init() {
 	ecevent.NewDmgPlayer(entity1, 20, ecevent.Events.CollisionMap)
 	eccomp.NewPosition(entity1, 200, -200)
 	eccomp.NewMoveWithCamera(entity1)
+	eccomp.NewMovePatrol(entity1)
 
 	entity2 := ecentity.NewEntity()
 	eccomp.NewRend(entity2, "assets/gopher.png")
