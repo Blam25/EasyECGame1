@@ -3,6 +3,7 @@ package main
 
 import (
 	"log"
+	"math/rand"
 
 	"github.com/Blam25/Test/Pkg/eccomp"
 	"github.com/Blam25/Test/Pkg/ecentity"
@@ -23,7 +24,32 @@ func main() {
 	}
 }
 
+func massProduce(x float64, y float64, dir eccomp.Direction) {
+
+	entity1 := ecentity.NewEntity()
+	eccomp.NewRend(entity1, "assets/gopher.png")
+	eccomp.NewCollider(entity1)
+	ecevent.NewDmgPlayer(entity1, 20, ecevent.Events.CollisionMap)
+	eccomp.NewPosition(entity1, x-250, y-250)
+	eccomp.NewMoveWithCamera(entity1)
+	eccomp.NewMovePatrol(entity1, dir)
+
+}
+
 func init() {
+
+	for i := 0; i < 25; i++ {
+		massProduce(float64(rand.Intn(500)), float64(rand.Intn(500)), eccomp.Left)
+	}
+	for i := 0; i < 25; i++ {
+		massProduce(float64(rand.Intn(500)), float64(rand.Intn(500)), eccomp.Up)
+	}
+	for i := 0; i < 25; i++ {
+		massProduce(float64(rand.Intn(500)), float64(rand.Intn(500)), eccomp.Right)
+	}
+	for i := 0; i < 25; i++ {
+		massProduce(float64(rand.Intn(500)), float64(rand.Intn(500)), eccomp.Down)
+	}
 	initMyComponents()
 	initMySystems()
 	print("hej")
@@ -40,7 +66,7 @@ func init() {
 	ecevent.NewDmgPlayer(entity1, 20, ecevent.Events.CollisionMap)
 	eccomp.NewPosition(entity1, 200, -200)
 	eccomp.NewMoveWithCamera(entity1)
-	eccomp.NewMovePatrol(entity1)
+	eccomp.NewMovePatrol(entity1, eccomp.Left)
 
 	entity2 := ecentity.NewEntity()
 	eccomp.NewRend(entity2, "assets/gopher.png")
